@@ -597,6 +597,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSpeed: 100
+  barDisplay: 0
+  posOxygen: {x: 0, y: 0}
+  sizeOxygen: {x: 0, y: 0}
+  emptyTexOxygen: {fileID: 0}
+  fullTexOxygen: {fileID: 0}
+  whiteTexture: {fileID: 0}
 --- !u!1001 &2935616783725168105
 PrefabInstance:
   m_ObjectHideFlags: 0

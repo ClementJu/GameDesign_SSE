@@ -8,18 +8,29 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed = 100.0f;
     private Rigidbody2D rigidbody2D;
     private Vector3 startPos;
+
+    // Oxygen level
+    public float barDisplay; //current progress
+    public Vector2 posOxygen;
+    public Vector2 sizeOxygen;
+    public Texture2D emptyTexOxygen;
+    public Texture2D fullTexOxygen;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         isMoving = false;
         startPos = transform.position;
+        posOxygen = new Vector2(20, 40);
+        sizeOxygen = new Vector2(60, 20);
     }
 
     // Update is called once per frame
     void Update()
     {
         FaceMouse();
+        ManageOxygen();
     }
 
     void FaceMouse()
@@ -47,6 +58,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ManageOxygen()
+    {
+        barDisplay = Time.time * 0.05f;
+        if (barDisplay > 1.0f)
+        {
+            Death();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.name.Contains("Platform"))
@@ -56,9 +76,32 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.name.Contains("Enemy"))
         {
-            transform.position = startPos;
-            rigidbody2D.velocity = new Vector2(0,0);
-            isMoving = false;
+            Death();
         }
+    }
+
+    void Death()
+    {
+        transform.position = startPos;
+        rigidbody2D.velocity = new Vector2(0, 0);
+        isMoving = false;
+    }
+
+    void drawOxygenBar()
+    {
+        //draw the background:
+        GUI.BeginGroup(new Rect(posOxygen.x, posOxygen.y, sizeOxygen.x, sizeOxygen.y));
+        GUI.Box(new Rect(0, 0, sizeOxygen.x, sizeOxygen.y), emptyTexOxygen);
+
+        //draw the filled-in part:
+        GUI.BeginGroup(new Rect(0, 0, sizeOxygen.x * barDisplay, sizeOxygen.y));
+        GUI.Box(new Rect(0, 0, sizeOxygen.x, sizeOxygen.y), fullTexOxygen);
+        GUI.EndGroup();
+        GUI.EndGroup();
+    }
+
+    void OnGUI()
+    {
+        drawOxygenBar();
     }
 }
