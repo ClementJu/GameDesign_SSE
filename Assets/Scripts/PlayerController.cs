@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed = 100.0f;
     private Rigidbody2D rigidbody2D;
     private Vector3 startPos;
+    public GameObject raycastPosition;
 
     // Oxygen level
     public float barDisplay; //current progress
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
-        transform.up = direction;
+        //transform.up = direction;
 
         if (Input.GetMouseButton(0))
         {
@@ -78,6 +79,13 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
+
+        print("Points colliding: " + col.contacts.Length);
+        print("First normal of the point that collide: " + col.contacts[0].normal);
+
+        Vector2 normCol = col.contacts[0].normal;
+        Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
+        transform.up = normCol;
     }
 
     void Death()
