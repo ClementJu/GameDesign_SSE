@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed = 100.0f;
     private Rigidbody2D rigidbody2D;
     private Vector3 startPos;
-    public GameObject raycastPosition;
+    float startLevel;
 
     // Oxygen level
     public float barDisplay; //current progress
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
         startPos = transform.position;
         posOxygen = new Vector2(20, 40);
         sizeOxygen = new Vector2(60, 20);
+        startLevel = Time.time;
+
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void ManageOxygen()
     {
-        barDisplay = Time.time * 0.05f;
+        barDisplay = (Time.time - startLevel) * 0.05f;
         if (barDisplay > 1.0f)
         {
             Death();
@@ -74,25 +77,27 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = false;
             rigidbody2D.velocity = new Vector2(0,0);
+
+            print("Points colliding: " + col.contacts.Length);
+            print("First normal of the point that collide: " + col.contacts[0].normal);
+
+            Vector2 normCol = col.contacts[0].normal;
+            Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
+            transform.up = normCol;
         }
         else if (col.gameObject.name.Contains("Enemy"))
         {
             Death();
         }
-
-        print("Points colliding: " + col.contacts.Length);
-        print("First normal of the point that collide: " + col.contacts[0].normal);
-
-        Vector2 normCol = col.contacts[0].normal;
-        Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
-        transform.up = normCol;
+        
     }
 
     void Death()
     {
-        transform.position = startPos;
-        rigidbody2D.velocity = new Vector2(0, 0);
-        isMoving = false;
+        //transform.position = startPos;
+        //rigidbody2D.velocity = new Vector2(0, 0);
+        //isMoving = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void drawOxygenBar()
