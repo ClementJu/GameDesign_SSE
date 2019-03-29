@@ -14,9 +14,10 @@ public class moveEnnemy : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        int speed = 50;
+        int speed = 5;
         direction = 1;
         maxDist = 2;
+        directionOfMove = new Vector3(1, 1, 0);
     }
 
     // Update is called once per frame
