@@ -44,7 +44,10 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
-        //transform.up = direction;
+        if (isMoving)
+        {
+            transform.up = direction;
+        }
 
         if (Input.GetMouseButton(0))
         {
