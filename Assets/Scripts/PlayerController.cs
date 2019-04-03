@@ -120,4 +120,9 @@ public class PlayerController : MonoBehaviour
     {
         drawOxygenBar();
     }
+
+    public bool MovingStatus()
+    {
+        return isMoving;
+    }
 }
