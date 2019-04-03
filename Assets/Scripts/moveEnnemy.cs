@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class moveEnnemy : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
+   
     private int direction;
     public float maxDist;
     public int speed;
@@ -14,10 +14,10 @@ public class moveEnnemy : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        int speed = 5;
+        //int speed = 5;
         direction = 1;
-        maxDist = 2;
-        directionOfMove = new Vector3(1, 1, 0);
+        //maxDist = 2;
+        //directionOfMove = new Vector3(1, 1, 0);
     }
 
     // Update is called once per frame
