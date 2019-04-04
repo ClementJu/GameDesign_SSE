@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
             transform.up = direction;
         }
 
-        if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             var delta = PlayerSpeed * Time.deltaTime;
             if (!isMoving)
@@ -58,7 +58,9 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
             }
         }
+
         Vector2 velocity = rigidbody2D.velocity;
+
         if(velocity.x == 0 && velocity.y == 0)
         {
             isMoving = false;
@@ -92,7 +94,17 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name.Contains("OxygenBubble"))
+        {
+            print("OXYGGEENNEE");
+            Destroy(col.gameObject);
+
+            startLevel = Time.time;
+        }
     }
 
     void Death()
