@@ -100,10 +100,14 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.name.Contains("OxygenBubble"))
         {
-            print("OXYGGEENNEE");
             Destroy(col.gameObject);
 
             startLevel = Time.time;
+        }
+        else if (col.gameObject.name.Contains("End"))
+        {
+            print("------ END");
+            Death();
         }
     }
 
