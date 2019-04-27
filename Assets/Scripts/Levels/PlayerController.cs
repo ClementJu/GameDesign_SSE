@@ -94,6 +94,10 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
+        else if (col.gameObject.name.Contains("Border"))
+        {
+            Death();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
