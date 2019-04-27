@@ -31,7 +31,8 @@ public class gamemanager : MonoBehaviour
         }
         if (name.Contains("intro"))
         {
-
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(name);
         }
         else
         {
