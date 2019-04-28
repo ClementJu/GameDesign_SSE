@@ -32,6 +32,7 @@ public class SpeackerText : MonoBehaviour
             }
             catch (System.IndexOutOfRangeException e)
             {
+                GameObject.Find("IntroSequence").GetComponent<Sequence>().NextSequence();
                 Destroy(gameObject);
             }
         }
