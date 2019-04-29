@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class intro_explosion : MonoBehaviour
 {
+    public GameObject fire;
     // Start is called before the first frame update
     void Start()
     {
-        
+        fire.SetActive(true);
     }
 
     // Update is called once per frame
