@@ -14,7 +14,10 @@ public class intro_explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject.Find("IntroSequence").GetComponent<Sequence>().NextSequence();
-        Destroy(gameObject);
+        if (Input.GetKeyDown("space"))
+        {
+            GameObject.Find("IntroSequence").GetComponent<Sequence>().NextSequence();
+            Destroy(gameObject);
+        }
     }
 }

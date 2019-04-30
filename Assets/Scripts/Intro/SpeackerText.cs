@@ -15,7 +15,7 @@ public class SpeackerText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.textDisplay = gameObject.transform.Find("Canvas/SpeackerText").gameObject;
+        this.textDisplay = gameObject.transform.Find("Canvas/Dialogue/SpeackerText").gameObject;
         //this.textDisplay.GetComponent<Text>().text = texts[textToDisplay];
         this.textDisplay.GetComponent<Text>().text = texts[0];
     }
