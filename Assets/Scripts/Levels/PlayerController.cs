@@ -80,15 +80,28 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.name.Contains("Platform"))
         {
-            isMoving = false;
-            rigidbody2D.velocity = new Vector2(0,0);
+            print(rigidbody2D.velocity.ToString());
+            if (System.Math.Abs(rigidbody2D.velocity.x) < 2 && System.Math.Abs(rigidbody2D.velocity.y) < 2)
+            {
+                isMoving = false;
+                rigidbody2D.velocity = new Vector2(0,0);
 
-            print("Points colliding: " + col.contacts.Length);
-            print("First normal of the point that collide: " + col.contacts[0].normal);
+                print("Points colliding: " + col.contacts.Length);
+                print("First normal of the point that collide: " + col.contacts[0].normal);
 
-            Vector2 normCol = col.contacts[0].normal;
-            Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
-            transform.up = normCol;
+                Vector2 normCol = col.contacts[0].normal;
+                Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
+                transform.up = normCol;
+            }
+            //isMoving = false;
+            //rigidbody2D.velocity = new Vector2(0,0);
+
+            //print("Points colliding: " + col.contacts.Length);
+            //print("First normal of the point that collide: " + col.contacts[0].normal);
+
+            //Vector2 normCol = col.contacts[0].normal;
+            //Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
+            //transform.up = normCol;
         }
         else if (col.gameObject.name.Contains("Enemy"))
         {
