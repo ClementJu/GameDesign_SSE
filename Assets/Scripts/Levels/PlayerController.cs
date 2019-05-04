@@ -24,9 +24,25 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         isMoving = false;
         startPos = transform.position;
+
+        // oxygen bar and related textures
         posOxygen = new Vector2(20, 40);
-        sizeOxygen = new Vector2(60, 20);
+        sizeOxygen = new Vector2(240, 80);
         startLevel = Time.time;
+
+        emptyTexOxygen = new Texture2D(260, 80);
+        fullTexOxygen = new Texture2D(260, 80);
+
+        Color fillColor = new Color(1, 0.6f, 0.2f);
+        Color[] fillColorArray = emptyTexOxygen.GetPixels();
+
+        for (int i = 0; i < fillColorArray.Length; ++i)
+        {
+            fillColorArray[i] = fillColor;
+        }
+
+        emptyTexOxygen.SetPixels(fillColorArray);
+        emptyTexOxygen.Apply();
 
     }
 
