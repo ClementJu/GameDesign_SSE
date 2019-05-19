@@ -1055,7 +1055,7 @@ PrefabInstance:
     - target: {fileID: 2935616783950713217, guid: 220ebf765102f4c4fa7c6e6164f59087,
         type: 3}
       propertyPath: m_Name
-      value: Platform
+      value: FirstPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 2935616783950713218, guid: 220ebf765102f4c4fa7c6e6164f59087,
         type: 3}

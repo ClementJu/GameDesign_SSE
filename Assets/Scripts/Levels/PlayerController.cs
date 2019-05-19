@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             var delta = PlayerSpeed * Time.deltaTime;
-            if (!isMoving)
+            if (!isMoving & CanMove(direction))
             {
                 rigidbody2D.AddForce(direction.normalized * PlayerSpeed);
                 isMoving = true;
@@ -81,6 +81,13 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = false;
         }
+    }
+
+    bool CanMove(Vector2 direction)
+    {
+        // returns false if the player tries to jump in the direction of the player he's currently standing on
+        // otherwise returns true
+        return (Vector2.Angle(direction, transform.up) < 90.0);
     }
 
     void ManageOxygen()
