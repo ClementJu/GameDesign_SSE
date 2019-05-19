@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector3 startPos;
     float startLevel;
+    private int boxColliderCount; // for one-sided platforms
 
     // Oxygen level
     public float barDisplay; //current progress
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         isMoving = false;
         startPos = transform.position;
+        boxColliderCount = 0;
 
         // oxygen bar and related textures
         posOxygen = new Vector2(20, 40);
@@ -103,11 +105,12 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.name.Contains("Platform"))
         {
-            print(rigidbody2D.velocity.ToString());
-            if (System.Math.Abs(rigidbody2D.velocity.x) < 2 && System.Math.Abs(rigidbody2D.velocity.y) < 2)
+            // if the player came from the top of a platform -> make him stop and stand on it
+            if (boxColliderCount != 2)
             {
                 isMoving = false;
                 rigidbody2D.velocity = new Vector2(0,0);
+                boxColliderCount = 0;
 
                 print("Points colliding: " + col.contacts.Length);
                 print("First normal of the point that collide: " + col.contacts[0].normal);
@@ -116,15 +119,11 @@ public class PlayerController : MonoBehaviour
                 Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
                 transform.up = normCol;
             }
-            //isMoving = false;
-            //rigidbody2D.velocity = new Vector2(0,0);
-
-            //print("Points colliding: " + col.contacts.Length);
-            //print("First normal of the point that collide: " + col.contacts[0].normal);
-
-            //Vector2 normCol = col.contacts[0].normal;
-            //Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
-            //transform.up = normCol;
+            // if the player came from the bottom of a platform -> go through it without stopping
+            else
+            {
+                boxColliderCount = 0;
+            }
         }
         else if (col.gameObject.name.Contains("Enemy"))
         {
@@ -148,6 +147,16 @@ public class PlayerController : MonoBehaviour
         {
             print("------ END");
             Death();
+        }
+        else if (col.gameObject.name.Contains("Platform"))
+        {
+            // if the player goes through one of the colliders under a platform
+            // allow to know where the player is coming from (top or bottom of a platform)
+            // useful for one-sided platforms
+            if (col is BoxCollider2D)
+            {
+                boxColliderCount++;
+            }
         }
     }
 
