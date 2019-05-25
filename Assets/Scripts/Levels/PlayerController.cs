@@ -72,8 +72,11 @@ public class PlayerController : MonoBehaviour
             var delta = PlayerSpeed * Time.deltaTime;
             if (!isMoving & CanMove(direction))
             {
+                AudioSource jumpSound = this.gameObject.transform.Find("jumpSound").gameObject.GetComponent<AudioSource>();
+                jumpSound.Play();
                 rigidbody2D.AddForce(direction.normalized * PlayerSpeed);
                 isMoving = true;
+
             }
         }
 
@@ -109,6 +112,8 @@ public class PlayerController : MonoBehaviour
             if (boxColliderCount != 2)
             {
                 isMoving = false;
+                AudioSource landSource = this.gameObject.transform.Find("landSound").gameObject.GetComponent<AudioSource>();
+                landSource.Play();
                 rigidbody2D.velocity = new Vector2(0,0);
                 boxColliderCount = 0;
 
