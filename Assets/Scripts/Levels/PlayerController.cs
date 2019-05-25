@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
 
         // oxygen bar and related textures
         posOxygen = new Vector2(20, 40);
-        sizeOxygen = new Vector2(240, 80);
+        sizeOxygen = new Vector2(240, 40);
         startLevel = Time.time;
 
-        emptyTexOxygen = new Texture2D(260, 80);
-        fullTexOxygen = new Texture2D(260, 80);
+        emptyTexOxygen = new Texture2D(290, 40);
+        fullTexOxygen = new Texture2D(290, 40);
 
         Color fillColor = new Color(1, 0.6f, 0.2f);
         Color[] fillColorArray = emptyTexOxygen.GetPixels();

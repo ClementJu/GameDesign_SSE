@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class gamemanager : MonoBehaviour
 {
-    private bool inMainMenu = true;
+    //private bool inMainMenu = true;
     private bool inLevel = false;
     private AudioSource currentMusic;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         this.currentMusic = this.gameObject.transform.Find("BackGroundMusic/MainMenu").gameObject.GetComponent<AudioSource>();
         this.currentMusic.Play();
     }
@@ -29,14 +29,18 @@ public class gamemanager : MonoBehaviour
         {
             this.currentMusic.Stop();
         }
-        if (name.Contains("intro"))
+        if (name.Contains("intro") || name.Contains("mainMenu") || name.Contains("history"))
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+
+            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            this.currentMusic.Stop();
             SceneManager.LoadScene(name);
         }
         else
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+
+            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            this.currentMusic.Stop();
             SceneManager.LoadScene(name);
             this.currentMusic = this.gameObject.transform.Find("BackGroundMusic/Levels").gameObject.GetComponent<AudioSource>();
             this.currentMusic.Play();
