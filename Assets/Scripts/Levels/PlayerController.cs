@@ -145,8 +145,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.name.Contains("End"))
         {
-            print("------ END");
-            Death();
+            //print("------ END");
+            //Death();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if (col.gameObject.name.Contains("Platform"))
         {
