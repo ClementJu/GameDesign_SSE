@@ -30,6 +30,13 @@ public class Sequence : MonoBehaviour
                 sequencesRef[SequenceNb].SetActive(true);
                 break;
             case 3:
+                sequencesRef[SequenceNb].SetActive(true);
+                break;
+            case 4:
+                sequencesRef[SequenceNb].SetActive(true);
+                sequencesRef[SequenceNb - 2].SetActive(false);
+                break;
+            case 6:
                 GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/1_level");
                 break;
             default:

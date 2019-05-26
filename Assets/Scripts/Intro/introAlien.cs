@@ -8,6 +8,7 @@ public class introAlien : MonoBehaviour
     public GameObject NPCDead;
     public GameObject AlienExplosions;
     public GameObject Aliens;
+    public GameObject Avatar;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class introAlien : MonoBehaviour
         NPCDead.SetActive(true);
         AlienExplosions.SetActive(true);
         Aliens.SetActive(true);
+        Avatar.GetComponent<Animator>().Play("Panic");
     }
 
     // Update is called once per frame

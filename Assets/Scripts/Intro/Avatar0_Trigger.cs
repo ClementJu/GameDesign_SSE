@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienTrigger : MonoBehaviour
+public class Avatar0_Trigger : MonoBehaviour
 {
-    public GameObject explosion;
-    public AudioClip boom;
-    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -21,10 +18,6 @@ public class AlienTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Contains("Explosion")) { 
-            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-            audioSource.PlayOneShot(boom);
-        }
         if (col.gameObject.name.Contains("WindowTrigger"))
         {
             GameObject.Find("IntroSequence").GetComponent<Sequence>().NextSequence();
