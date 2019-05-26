@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
 
         // oxygen bar and related textures
         posOxygen = new Vector2(20, 40);
-        sizeOxygen = new Vector2(240, 80);
+        sizeOxygen = new Vector2(240, 40);
         startLevel = Time.time;
 
-        emptyTexOxygen = new Texture2D(260, 80);
-        fullTexOxygen = new Texture2D(260, 80);
+        emptyTexOxygen = new Texture2D(290, 40);
+        fullTexOxygen = new Texture2D(290, 40);
 
         Color fillColor = new Color(1, 0.6f, 0.2f);
         Color[] fillColorArray = emptyTexOxygen.GetPixels();
@@ -72,8 +72,11 @@ public class PlayerController : MonoBehaviour
             var delta = PlayerSpeed * Time.deltaTime;
             if (!isMoving & CanMove(direction))
             {
+                AudioSource jumpSound = this.gameObject.transform.Find("jumpSound").gameObject.GetComponent<AudioSource>();
+                jumpSound.Play();
                 rigidbody2D.AddForce(direction.normalized * PlayerSpeed);
                 isMoving = true;
+
             }
         }
 
@@ -109,6 +112,8 @@ public class PlayerController : MonoBehaviour
             if (boxColliderCount != 2)
             {
                 isMoving = false;
+                AudioSource landSource = this.gameObject.transform.Find("landSound").gameObject.GetComponent<AudioSource>();
+                landSource.Play();
                 rigidbody2D.velocity = new Vector2(0,0);
                 boxColliderCount = 0;
 
@@ -145,8 +150,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.name.Contains("End"))
         {
-            print("------ END");
-            Death();
+            //print("------ END");
+            //Death();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if (col.gameObject.name.Contains("Platform"))
         {

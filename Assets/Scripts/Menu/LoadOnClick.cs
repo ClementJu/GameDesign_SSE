@@ -15,4 +15,19 @@ public class LoadOnClick : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/1_level");
     }
 
+    public void history()
+    {
+        GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/history");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
+
+    public void mainMenu()
+    {
+        GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/mainMenu");
+    }
+
 }
