@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sequence : MonoBehaviour
 {
@@ -36,8 +37,12 @@ public class Sequence : MonoBehaviour
                 sequencesRef[SequenceNb].SetActive(true);
                 sequencesRef[SequenceNb - 2].SetActive(false);
                 break;
+            case 5:
+                sequencesRef[SequenceNb].SetActive(true);
+                break;
             case 6:
-                GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/1_level");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //GameObject.Find("GameManager").GetComponent<gamemanager>().LoadScene("Scenes/1_level");
                 break;
             default:
                 return;

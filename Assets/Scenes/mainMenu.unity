@@ -1806,7 +1806,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5578ec8371f074067a62579f5d4e52c6, type: 3}
-    m_FontSize: 84
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1817,7 +1817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SPACE STATION EVASION
+  m_Text: SPACE STATION INVASION
 --- !u!222 &1663543898
 CanvasRenderer:
   m_ObjectHideFlags: 0

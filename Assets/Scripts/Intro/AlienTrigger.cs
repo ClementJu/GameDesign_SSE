@@ -23,7 +23,7 @@ public class AlienTrigger : MonoBehaviour
     {
         if (col.gameObject.name.Contains("Explosion")) { 
             Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-            audioSource.PlayOneShot(boom);
+            audioSource.PlayOneShot(boom,0.5f);
         }
         if (col.gameObject.name.Contains("WindowTrigger"))
         {
