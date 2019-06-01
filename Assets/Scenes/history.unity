@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.4, y: -8}
-  m_SizeDelta: {x: 817.6, y: 219.2}
+  m_AnchoredPosition: {x: 6, y: 9}
+  m_SizeDelta: {x: 813.1, y: 282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542676575
 MonoBehaviour:
@@ -190,15 +190,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The international space station is attacked by aliens. Mr. Neil Alden Armstrong,
-    which is one of the spacemen in the station, decides to leave the station in order
-    to reach a more welcoming planet. To achieve this goal, he wears sticky boots
-    that help him to go from asteroids to asteroids.
-
-
-    All along his journey, Neil is confronted to many problems:  dangerous ennemies
-    try to kill him, his amount of oxygen is limited and the risk of wandering through
-    space in case of bad jump is highly pervasive.'
+  m_Text: "Mr. Neil Alden Armstrong, one of the spacemen working in the space station,
+    is spending an ordinary day on board, when suddenly, he hears noise from far away...\n\nUnfortunately,
+    aliens are attacking the station ! After several explosions, the space station
+    is completely destroyed and Armstrong is thrown on an asteroid. \n\nTherefore,
+    in order to survive, he decides to find a more hospitable planet to take refuge
+    on and jumps from asteroids to asteroids to reach it.\n\nAll along his journey,
+    Neil is confronted to many problems:  dangerous ennemies try to kill him, his
+    amount of oxygen is limited and the risk of wandering through space in case of
+    bad jump is highly pervasive."
 --- !u!222 &542676576
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16, y: 151}
+  m_AnchoredPosition: {x: -16, y: 181}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190431658
@@ -628,7 +628,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 232.02602
+  orthographic size: 249.47853
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -775,8 +775,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -57, y: -7}
-  m_SizeDelta: {x: 771, y: 406}
+  m_AnchoredPosition: {x: 43, y: -12.8}
+  m_SizeDelta: {x: 752, y: 414.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629592574
 MonoBehaviour:
