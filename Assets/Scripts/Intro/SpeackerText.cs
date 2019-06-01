@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpeackerText : MonoBehaviour
 {
-    string[] texts = { "Welcome on bord dear guest",
+    string[] texts = { "Welcome on board dear guest",
                         "Lorem Ipsum",
                         "Dolores ipsaem",
                         "Tanatinus oratem patchiss\nOrolem jistatum",};
