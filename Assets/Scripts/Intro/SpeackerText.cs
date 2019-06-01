@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class SpeackerText : MonoBehaviour
 {
     string[] texts = { "Welcome on board dear guest",
-                        "Lorem Ipsum",
-                        "Dolores ipsaem",
-                        "Tanatinus oratem patchiss\nOrolem jistatum",};
+                        "What an ordinary day...",
+                        "Mmh, what is this noise?",
+                        "It seems to come from outside...",};
     public int textToDisplay = 0;
     GameObject textDisplay;
     private bool keyPress = false;
