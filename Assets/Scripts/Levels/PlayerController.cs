@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         FaceMouse();
         ManageOxygen();
+        BackToMainMenu();
         if (dead)
         {
             if (Time.time - timeOfDeath > 1f)
@@ -230,5 +231,14 @@ public class PlayerController : MonoBehaviour
     public bool MovingStatus()
     {
         return isMoving;
+    }
+
+    public void BackToMainMenu()
+    {
+        if (Input.GetKey("escape"))
+        {
+            SceneManager.LoadScene(0);
+        }
+
     }
 }
