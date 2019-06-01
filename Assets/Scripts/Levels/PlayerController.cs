@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPos;
     float startLevel;
     private int boxColliderCount; // for one-sided platforms
+    public bool dead; // useful for death screen
+    public float timeOfDeath; // useful for death screen
 
     // Oxygen level
     public float barDisplay; //current progress
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 sizeOxygen;
     public Texture2D emptyTexOxygen;
     public Texture2D fullTexOxygen;
+    public Texture2D fullScreenTex;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,23 @@ public class PlayerController : MonoBehaviour
         emptyTexOxygen.SetPixels(fillColorArray);
         emptyTexOxygen.Apply();
 
+
+        // death screen
+        fullScreenTex = new Texture2D(Screen.width, Screen.height);
+
+        Color fillColorDS = new Color(0.7f, 0f, 0.1f, 0.5f);
+        Color[] fillColorArrayDS = fullScreenTex.GetPixels();
+
+        for (int i = 0; i < fillColorArrayDS.Length; ++i)
+        {
+            fillColorArrayDS[i] = fillColorDS;
+        }
+
+        fullScreenTex.SetPixels(fillColorArrayDS);
+        fullScreenTex.Apply();
+
+        dead = false;
+        timeOfDeath = 0f;
     }
 
     // Update is called once per frame
@@ -53,6 +73,14 @@ public class PlayerController : MonoBehaviour
     {
         FaceMouse();
         ManageOxygen();
+        if (dead)
+        {
+            if (Time.time - timeOfDeath > 1f)
+            {
+                dead = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
     void FaceMouse()
@@ -168,10 +196,8 @@ public class PlayerController : MonoBehaviour
 
     void Death()
     {
-        //transform.position = startPos;
-        //rigidbody2D.velocity = new Vector2(0, 0);
-        //isMoving = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        dead = true;
+        timeOfDeath = Time.time;
     }
 
     void drawOxygenBar()
@@ -187,9 +213,18 @@ public class PlayerController : MonoBehaviour
         GUI.EndGroup();
     }
 
+    void drawDeathScreen()
+    {
+        if (dead)
+        {
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), fullScreenTex);
+        }
+    }
+
     void OnGUI()
     {
         drawOxygenBar();
+        drawDeathScreen();
     }
 
     public bool MovingStatus()
