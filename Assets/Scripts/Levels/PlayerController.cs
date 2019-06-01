@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
     void ManageOxygen()
     {
         barDisplay = (Time.time - startLevel) * 0.05f;
-        if (barDisplay > 1.0f)
+        if (barDisplay > 1.0f && !dead)
         {
             Death();
         }
