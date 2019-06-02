@@ -196,9 +196,9 @@ MonoBehaviour:
     is completely destroyed and Armstrong is thrown on an asteroid. \n\nTherefore,
     in order to survive, he decides to find a more hospitable planet to take refuge
     on and jumps from asteroids to asteroids to reach it.\n\nAll along his journey,
-    Neil is confronted to many problems:  dangerous ennemies try to kill him, his
-    amount of oxygen is limited and the risk of wandering through space in case of
-    bad jump is highly pervasive."
+    Neil is confronted to many problems:  dangerous enemies try to kill him, his amount
+    of oxygen is limited and the risk of wandering through space in case of bad jump
+    is highly pervasive."
 --- !u!222 &542676576
 CanvasRenderer:
   m_ObjectHideFlags: 0
