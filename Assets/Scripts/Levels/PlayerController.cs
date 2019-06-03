@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private int boxColliderCount; // for one-sided platforms
     public bool dead; // useful for death screen
     public float timeOfDeath; // useful for death screen
+    private bool isFellowY;
 
     // Oxygen level
     public float barDisplay; //current progress
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         startPos = transform.position;
         boxColliderCount = 0;
+        isFellowY = false;
 
         // oxygen bar and related textures
         posOxygen = new Vector2(20, 40);
@@ -197,6 +199,18 @@ public class PlayerController : MonoBehaviour
                 boxColliderCount++;
             }
         }
+        else if(col.gameObject.name.Contains("FellowY"))
+        {
+            isFellowY = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.name.Contains("FellowY"))
+        {
+            isFellowY = false;
+        }
     }
 
     void Death()
@@ -244,5 +258,10 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+    }
+
+    public bool FellowY()
+    {
+        return isFellowY;
     }
 }
