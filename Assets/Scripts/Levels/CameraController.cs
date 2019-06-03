@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 
         if (player.GetComponent<PlayerController>().FellowY())
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0.5f);
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1f);
             gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
         }
         else
