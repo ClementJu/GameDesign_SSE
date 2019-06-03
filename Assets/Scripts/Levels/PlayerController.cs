@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     // Oxygen level
     public float barDisplay; //current progress
+    public bool needOxygen;
     public Vector2 posOxygen;
     public Vector2 sizeOxygen;
     public Texture2D emptyTexOxygen;
@@ -126,11 +127,14 @@ public class PlayerController : MonoBehaviour
 
     void ManageOxygen()
     {
-        barDisplay = (Time.time - startLevel) * 0.05f;
-        if (barDisplay > 1.0f && !dead)
+        if (needOxygen)
         {
-            Death();
-        }
+            barDisplay = (Time.time - startLevel) * 0.05f;
+            if (barDisplay > 1.0f && !dead)
+            {
+                Death();
+            }
+        }        
     }
 
     void OnCollisionEnter2D(Collision2D col)
