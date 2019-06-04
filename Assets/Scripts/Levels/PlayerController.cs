@@ -11,18 +11,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPos;
     float startLevel;
     private int boxColliderCount; // for one-sided platforms
-    public bool dead; // useful for death screen
-    public float timeOfDeath; // useful for death screen
+    private bool dead; // useful for death screen
+    private float timeOfDeath; // useful for death screen
     private bool isFellowY;
 
     // Oxygen level
-    public float barDisplay; //current progress
+    private float barDisplay; //current progress
     public bool needOxygen;
-    public Vector2 posOxygen;
-    public Vector2 sizeOxygen;
-    public Texture2D emptyTexOxygen;
-    public Texture2D fullTexOxygen;
-    public Texture2D fullScreenTex;
+    private Vector2 posOxygen;
+    private Vector2 sizeOxygen;
+    private Texture2D emptyTexOxygen;
+    private Texture2D fullTexOxygen;
+    private Texture2D fullScreenTex;
 
     // Start is called before the first frame update
     void Start()
