@@ -19,9 +19,9 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //transform.position = new Vector3(player.transform.position.x, 0.9f*player.transform.position.y, -10f);
+        transform.position = new Vector3(player.transform.position.x, 0.9f*player.transform.position.y, -10f);
 
-        if (player.GetComponent<PlayerController>().FellowY())
+        /**if (player.GetComponent<PlayerController>().FellowY())
         {
             gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1f);
             gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
@@ -29,6 +29,6 @@ public class CameraController : MonoBehaviour
         else
         {
             transform.position = new Vector3(player.transform.position.x, transform.position.y, -10f);
-        }
+        }*/
     }
 }
