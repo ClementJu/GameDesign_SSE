@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool dead; // useful for death screen
     private float timeOfDeath; // useful for death screen
     private bool isFellowY;
+    private bool currentPlatformIsMoving;
+    private GameObject currentPlatform;
+    private Vector2 offset;
 
     // Oxygen level
     private float barDisplay; //current progress
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
         dead = false;
         timeOfDeath = 0f;
+        currentPlatformIsMoving = false;
     }
 
     // Update is called once per frame
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+        MovingPlatform();
     }
 
     void FaceMouse()
@@ -108,7 +113,7 @@ public class PlayerController : MonoBehaviour
                 jumpSound.Play();
                 rigidbody2D.AddForce(direction.normalized * PlayerSpeed);
                 isMoving = true;
-
+                currentPlatformIsMoving = false;
             }
         }
 
@@ -151,6 +156,8 @@ public class PlayerController : MonoBehaviour
                 landSource.Play();
                 rigidbody2D.velocity = new Vector2(0,0);
                 boxColliderCount = 0;
+                currentPlatformIsMoving = col.gameObject.GetComponent<platformScript>().isMovingPlatform;
+                currentPlatform = col.gameObject;
 
                 print("Points colliding: " + col.contacts.Length);
                 print("First normal of the point that collide: " + col.contacts[0].normal);
@@ -158,6 +165,7 @@ public class PlayerController : MonoBehaviour
                 Vector2 normCol = col.contacts[0].normal;
                 Vector2 direction = new Vector2(normCol.x - transform.position.x, normCol.y - transform.position.y);
                 transform.up = normCol;
+                offset = normCol;
             }
             // if the player came from the bottom of a platform -> go through it without stopping
             else
@@ -264,6 +272,14 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+    }
+
+    public void MovingPlatform()
+    {
+        if (!isMoving && currentPlatformIsMoving && currentPlatform != null)
+        {
+            transform.position = (Vector2)currentPlatform.transform.position + offset;
+        }
     }
 
     public bool FellowY()

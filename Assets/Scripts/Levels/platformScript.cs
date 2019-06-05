@@ -45,4 +45,9 @@ public class platformScript : MonoBehaviour
 
         }
     }
+
+    public int getDirection()
+    {
+        return direction;
+    }
 }
