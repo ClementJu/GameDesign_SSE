@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private bool isMoving;
-    public float PlayerSpeed = 100.0f;
+    public float PlayerSpeed = 6.0f;
     private Rigidbody2D rigidbody2D;
     private Vector3 startPos;
     float startLevel;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             {
                 AudioSource jumpSound = this.gameObject.transform.Find("jumpSound").gameObject.GetComponent<AudioSource>();
                 jumpSound.Play();
-                rigidbody2D.AddForce(direction.normalized * PlayerSpeed);
+                rigidbody2D.velocity = direction.normalized * PlayerSpeed;
                 isMoving = true;
                 currentPlatformIsMoving = false;
             }

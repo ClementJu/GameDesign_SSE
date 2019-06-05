@@ -6621,7 +6621,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -21894,6 +21894,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479478624986650854, guid: 95851d90c1fc1c549b20a76c7518ab8b,
+        type: 3}
+      propertyPath: PlayerSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1479478624986650855, guid: 95851d90c1fc1c549b20a76c7518ab8b,
         type: 3}
