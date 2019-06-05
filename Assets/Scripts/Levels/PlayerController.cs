@@ -183,11 +183,17 @@ public class PlayerController : MonoBehaviour
 
             startLevel = Time.time;
         }
-        else if (col.gameObject.name.Contains("End"))
+        else if (col.gameObject.name.Contains("End") || col.gameObject.name.Contains("Bomb"))
         {
             //print("------ END");
             //Death();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().name.Contains("4")){
+                SceneManager.LoadScene("mainMenu");
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
         else if (col.gameObject.name.Contains("Platform"))
         {
