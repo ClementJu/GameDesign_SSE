@@ -7,7 +7,7 @@ public class moveEnnemy : MonoBehaviour
    
     private int direction;
     public float maxDist;
-    public int speed;
+    public float speed;
     private Vector2 initialPosition;
     public Vector3 directionOfMove;
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class moveEnnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        directionOfMove = directionOfMove.normalized;
         if (Vector2.Distance(initialPosition, transform.position) >= maxDist)
         {
             direction = -direction;
